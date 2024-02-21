@@ -122,4 +122,35 @@
     margin-left: 6px;
     margin-top: 6px;
     height: 324px;
+    color: #263555;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.white-btn {
+    border: none;
+    width: 70px;
+    height: 45px;
+    color: #263555;
+    border-top: solid #1B0F1B 4px;
+    border-left: solid #1B0F1B 4px;
+    border-radius: 4px;
+}
+
+.red-btn {
+    border: none;
+    width: 70px;
+    height: 45px;
+    background-color: #C92E3A;
+    color: white;
+    border-top: solid #1B0F1B 4px;
+    border-left: solid #1B0F1B 4px;
+    border-radius: 4px;
+}
+
+.mt {
+    margin-top: 10px;
 }
