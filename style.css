@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Press Start 2P", system-ui;
+}
+
+.calculator-body {
+    margin: 0 auto;
+    margin-top: 64px;
+    width: 400px;
+    height: 600px;
+    background-color: #0B5499;
+    border-radius: 8px;
+    padding-top: 32px;
+}
+
+.calculation-box-border {
+    background-color: #484E43;
+    padding: 8px 10px;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.calculation-box {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    background-color: #B2B2B2;
+    height: 54px;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 6px;
+}
+
+.expression-text {
+    font-size: 32px;
+    letter-spacing: -2px;
+}
+
+
+/* Maybe don't use flex here just use regular displays as this is just going to be a static
+calculator it's not going to change */
+.decoration {
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 16px;
+}
+
