@@ -15,11 +15,19 @@
     padding-top: 32px;
 }
 
+.border-lines {
+    margin: 0 4px;
+    border-top: solid #0F2F42 3px;
+    border-bottom: solid #1066A5 3px;
+}
+
 .calculation-box-border {
     background-color: #484E43;
     padding: 8px 10px;
     margin: 0 auto;
     width: 80%;
+    border-top: solid #07334D 8px;
+    border-bottom: solid #1066A5 4px;
 }
 
 .calculation-box {
@@ -43,8 +51,49 @@
 calculator it's not going to change */
 .decoration {
     display: flex;
-    width: 90%;
+    width: 85%;
     margin: 0 auto;
     margin-top: 16px;
 }
 
+.title {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    letter-spacing: 1px;
+}
+
+.solar-panel {
+    margin-top: 12px;
+    display: flex;
+    border-top: solid #010504 4px;
+    border-left: solid #010504 4px;
+    width: 87%;
+    height: 50px;
+}
+
+.box1, .box2, .box3, .box4 {
+    background-color: #1A1F1D;
+    width: 100%;
+}
+
+.box1, .box2, .box3 {
+    border-right-style: solid;
+    border-right-width: 3px;
+    border-right-color: #010504;
+}
+
+.model-container {
+    display: flex;
+}
+
+.model {
+    margin: 0;
+    padding: 0;
+    font-family: "Bree Serif", serif;
+    font-size: 32px;
+    align-items: start;
+    line-height: 22px;
+    color: white;
+    padding-left: 16px;
+    letter-spacing: 2px;
+}
