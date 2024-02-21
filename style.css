@@ -5,17 +5,23 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.calculator-flex {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .calculator-body {
-    margin: 0 auto;
-    margin-top: 64px;
     width: 400px;
     height: 600px;
     background-color: #0B5499;
     border-top-right-radius: 6px;
     border-top-left-radius: 6px;
-    border-bottom-left-radius: 32px;
-    border-bottom-right-radius: 32px;
+    border-bottom-left-radius: 34px;
+    border-bottom-right-radius: 34px;
     padding-top: 32px;
+    border-bottom: solid #072531 8px;
 }
 
 .border-lines {
@@ -145,8 +151,8 @@
     width: 70px;
     height: 45px;
     color: #263555;
-    border-top: solid #1B0F1B 4px;
-    border-left: solid #1B0F1B 4px;
+    border-top: solid #1B0F1B 3px;
+    border-left: solid #1B0F1B 3px;
     border-radius: 4px;
 }
 
@@ -158,8 +164,8 @@
     height: 45px;
     background-color: #C92E3A;
     color: white;
-    border-top: solid #1B0F1B 4px;
-    border-left: solid #1B0F1B 4px;
+    border-top: solid #1B0F1B 3px;
+    border-left: solid #1B0F1B 3px;
     border-radius: 4px;
 }
 
@@ -171,8 +177,8 @@
     height: 100px;
     background-color: #C92E3A;
     color: white;
-    border-top: solid #1B0F1B 4px;
-    border-left: solid #1B0F1B 4px;
+    border-top: solid #1B0F1B 3px;
+    border-left: solid #1B0F1B 3px;
     border-radius: 4px;  
 }
 
