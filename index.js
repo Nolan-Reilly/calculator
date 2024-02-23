@@ -11,57 +11,111 @@ const equalsButton = document.querySelector("#equals");
 
 const solarPanel = document.querySelector("#solarPanel");
 
-let solution = 0;
 let firstNumber;
 let operation;
 let secondNumber;
 let isOperating = false;
 
+// Parses a given equation to separate numbers, from operations to call the
+// operate function
 function parseEquation(equation) {
     equation = equation.replace(firstNumber, "");
+
+    let currOperation = equation[0];
+
     equation = equation.replace(operation, "");
+    equation = equation.replace(currOperation, "");
 
     secondNumber = equation;
 
-    firstNumber = operate(firstNumber, operation, secondNumber);
-
-    console.log(firstNumber);
+    firstNumber = operate(firstNumber, currOperation, secondNumber);
     
-    expressionText.textContent = firstNumber + operation;
+    expressionText.textContent = firstNumber;
+}
+
+// Checks if a number is a float
+function isFloat(value) {
+    if (typeof value === "number" && !Number.isNaN(value) && !Number.isInteger(value)) {
+        return true;
+    }
+
+    return false;
 }
 
 function add(num1, num2) {
-    console.log(parseInt(num1) + parseInt(num2));
+    if (isFloat(parseFloat(num1)) || isFloat(parseFloat(num2))) {
+        return parseFloat(num1) + parseFloat(num2);
+    }
+    
     return parseInt(num1) + parseInt(num2);
 }
 
 function subtract(num1, num2) {
-    return num1, num2;
+    if (isFloat(parseFloat(num1)) || isFloat(parseFloat(num2))) {
+        return parseFloat(num1) - parseFloat(num2);
+    }
+    
+    return parseInt(num1) - parseInt(num2);
 }
 
 function multiply(num1, num2) {
-    return num1 * num2;
+    if (isFloat(parseFloat(num1)) || isFloat(parseFloat(num2))) {
+        return parseFloat(num1) * parseFloat(num2);
+    }
+    
+    return parseInt(num1) * parseInt(num2);
 }
 
 function divide(num1, num2) {
-    return num1 / num2;
+    if (isFloat(parseFloat(num1)) || isFloat(parseFloat(num2))) {
+        return parseFloat(num1) / parseFloat(num2);
+    }
+    
+    return parseInt(num1) / parseInt(num2);
 }
 
+// Determines which operation should be performed based on information received
+// from the parseEquation function (a lot of repetition below should fix later
+// by doing function decomposition)
 function operate(num1, operator, num2) {
     if (operator == "+") {
-        return add(num1, num2);
+        let solution = add(num1, num2);
+
+        if (isFloat(solution)) {
+            return parseFloat(solution.toFixed(3));
+        }
+
+        return solution;
     }
 
     if (operator == "-") {
-        return subtract(num1, num2);
+        let solution = subtract(num1, num2);
+
+        if (isFloat(solution)) {
+            return parseFloat(solution.toFixed(3));
+        }
+
+        return solution;
     }
 
-    if (operator == "*") {
-        return multiply(num1, num2);
+    if (operator == "x") {
+        let solution = multiply(num1, num2);
+
+        if (isFloat(solution)) {
+            return parseFloat(solution.toFixed(3));
+        }
+
+        return solution;
     }
 
     if (operator == "/") {
-        return divide(num1, num2);
+        let solution = divide(num1, num2);
+
+        if (isFloat(solution)) {
+            return parseFloat(solution.toFixed(3));
+        }
+
+        return solution;
     }
 }
 
@@ -74,6 +128,7 @@ numbers.forEach(function(number) {
     })
 })
 
+// Performs addition on equation
 addButton.addEventListener("click", function(event) {
     if (!isOperating) {
         isOperating = true;
@@ -81,27 +136,67 @@ addButton.addEventListener("click", function(event) {
         operation = "+"
         expressionText.textContent += "+";
     } else {
-        // There exists two operations in the expressionText
+        operation = "+"
+        expressionText.textContent += "+";
         parseEquation(expressionText.textContent);
+        expressionText.textContent += operation;
     }
 })
 
-// subtractButton.addEventListener("click", function(event) {
-//     expressionText.textContent += "-";
-// })
+// Performs subtraction of equation
+subtractButton.addEventListener("click", function(event) {
+    if (!isOperating) {
+        isOperating = true;
+        firstNumber = expressionText.textContent;
+        operation = "-"
+        expressionText.textContent += "-";
+    } else {
+        operation = "-";
+        expressionText.textContent += "-";
+        parseEquation(expressionText.textContent);
+        expressionText.textContent += operation;
+    }
+})
 
-// multiplyButton.addEventListener("click", function(event) {
-//     expressionText.textContent += "x";
-// })
+// Performs multiplication on equation
+multiplyButton.addEventListener("click", function(event) {
+    if (!isOperating) {
+        isOperating = true;
+        firstNumber = expressionText.textContent;
+        operation = "x"
+        expressionText.textContent += "x";
+    } else {
+        operation = "x";
+        expressionText.textContent += "x";
+        parseEquation(expressionText.textContent);
+        expressionText.textContent += operation;
+    }
+})
 
-// divideButton.addEventListener("click", function(event) {
-//     expressionText.textContent += "/";
-// })
+// performs division on equation
+divideButton.addEventListener("click", function(event) {
+    if (!isOperating) {
+        isOperating = true;
+        firstNumber = expressionText.textContent;
+        operation = "/"
+        expressionText.textContent += "/";
+    } else {
+        operation = "/";
+        expressionText.textContent += "/";
+        parseEquation(expressionText.textContent);
+        expressionText.textContent += operation;
+    }
+})
 
+// Find the total and reset the isOperating variable to false
 equalsButton.addEventListener("click", function(event) {
-    // We don't want to add this to the expression text we just kind of want
-    // to have on the screen the solution number, and set the isOperating
-    // variable back to true
+    // Don't do anything if the user continually presses equals
+    if (!isOperating) {
+        return;
+    }
+
+    isOperating = false;
+    parseEquation(expressionText.textContent);
 })
 
 // Clears the expressionText
@@ -121,17 +216,3 @@ solarPanel.addEventListener("mouseover", function(event) {
 solarPanel.addEventListener("mouseout", function(event) {
     expressionText.classList.remove("opacity");
 })
-
-// Operation process
-// 1. User begins by entering numbers
-// 2. Once the user clicks an operation set the first number to what was the
-// Expression text
-// 3. Set the operation variable to the operator from the eventListener
-
-// Can create an isOperating variable, and call a function whenever the user
-// has selected more than one operation. If the user presses the equal
-// operation isOperating will be set to false, and whenever the user
-// presses an operator it will be set to true.
-
-// Create a function that whenever isOperating is True, which means that there
-// currently exists an operating in expression text

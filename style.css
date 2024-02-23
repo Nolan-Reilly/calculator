@@ -51,9 +51,12 @@
 }
 
 .expression-text {
+    margin-right: auto;
+    padding-left: 4px;
     font-family: "Press Start 2P", system-ui;
     font-size: 32px;
     letter-spacing: -2px;
+    overflow: hidden;
 }
 
 .decoration {
