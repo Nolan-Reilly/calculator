@@ -28,6 +28,16 @@ function parseEquation(equation) {
 
     secondNumber = equation;
 
+    // Essentially reset our program
+    if (currOperation == "/" && secondNumber == "0") {
+        firstNumber = null;
+        operation = null;
+        secondNumber = null;
+        isOperating = false;
+        expressionText.textContent = "";
+        return;
+    }
+
     firstNumber = operate(firstNumber, currOperation, secondNumber);
     
     expressionText.textContent = firstNumber;
